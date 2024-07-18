@@ -30,7 +30,7 @@ RUN python3 -m pip install .
 WORKDIR /pytr/pytr
 # monkey patch: pyinstaller does not support 'site' module
 # so replace all exit() calls with sys.exit() and import the sys module
-RUN sed -i 's/exit(/sys.exit(/g' *
+RUN sed -i 's/exit(/sys.exit(/g' *.py
 RUN sed -i '/import signal/a import sys' main.py
 RUN sed -i '/import logging/a import sys' __main__.py
 RUN sed -i '/import re/a import sys' dl.py
