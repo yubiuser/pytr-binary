@@ -17,7 +17,7 @@ jobs:
       - name: Get latest pytr commit hash
         id: prepare
         run: |
-          git clone https://github.com/marzzzello/pytr.git
+          git clone https://github.com/pytr-org/pytr.git
           cd ./pytr
           hash=$(git rev-parse --short HEAD)
           echo "PYTR_HASH=${hash}" >>  "$GITHUB_OUTPUT"

@@ -2,7 +2,7 @@
 ARG debian_version=slim-buster
 ARG python_version=3.9
 
-FROM python:${python_version}-${debian_version} as builder
+FROM python:${python_version}-${debian_version} AS builder
 
 RUN apt-get update && \
     apt-get --no-install-recommends install -y \
@@ -20,7 +20,7 @@ RUN python3 -m pip install --upgrade \
     wheel \
     && python3 -m pip install pyinstaller
 
-ADD https://github.com/marzzzello/pytr.git /pytr
+ADD https://github.com/pytr-org/pytr.git /pytr
 WORKDIR /pytr
 
 
@@ -42,5 +42,5 @@ RUN sed -i '/import time/a import sys' account.py
 RUN python3 -OO -m PyInstaller -F --strip --name pytr ./main.py
 
 
-From scratch as export
+FROM scratch AS export
 COPY --from=builder /pytr/pytr/dist/pytr /pytr
