@@ -31,10 +31,9 @@ WORKDIR /pytr/pytr
 # monkey patch: pyinstaller does not support 'site' module
 # so replace all exit() calls with sys.exit() and import the sys module
 RUN sed -i 's/exit(/sys.exit(/g' *
-RUN sed -i '/import time/a import sys' main.py
+RUN sed -i '/import signal/a import sys' main.py
 RUN sed -i '/import logging/a import sys' __main__.py
 RUN sed -i '/import re/a import sys' dl.py
-RUN sed -i '/import time/a import sys' account.py
 
 # Build the executable file (-F) and strip debug symbols
 # Use pythons optimize flag (-OO) to remove doc strings, assert statements, sets __debug__ to false
