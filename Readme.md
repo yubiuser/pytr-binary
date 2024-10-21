@@ -1,6 +1,6 @@
 # pytr: Use TradeRepublic in terminal (binary)
 
-This repo is baesd on [https://github.com/marzzzello/pytr](https://github.com/marzzzello/pytr) which provides a python libary to interact with the API from Trade Republic online brokerage.
+This repo is based on [https://github.com/pytr-org/pytr](https://github.com/pytr-org/pytr) which provides a python library to interact with the API from Trade Republic online brokerage.
 ___
 
 I was looking for a way to use `pytr` but was not keen to setup a whole Python environment. Instead, I thought of using [PyInstaller](https://github.com/pyinstaller/pyinstaller) to create a self-contained binary.
