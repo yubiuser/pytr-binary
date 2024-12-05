@@ -1,8 +1,10 @@
 # syntax=docker/dockerfile:1
 ARG debian_version=slim-buster
 ARG python_version=3.9
+ARG pytr_tag=v0.3.1
 
 FROM python:${python_version}-${debian_version} AS builder
+ARG pytr_tag
 
 RUN apt-get update && \
     apt-get --no-install-recommends install -y \
@@ -20,10 +22,13 @@ RUN python3 -m pip install --upgrade \
     wheel \
     && python3 -m pip install pyinstaller
 
-ADD https://github.com/pytr-org/pytr.git /pytr
+ADD https://github.com/pytr-org/pytr.git#${pytr_tag} /pytr
 WORKDIR /pytr
 
 
+# Temporay fix for websockets 13
+# see https://github.com/pytr-org/pytr/issues/143
+RUN pip install websockets==13
 # Install from source
 RUN python3 -m pip install .
 
