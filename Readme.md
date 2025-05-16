@@ -11,4 +11,4 @@ I created Docker files which will build the `pytr` binary and copy it to a scrat
 docker build --output=. --target=export .
 ```
 
-The used base image are old on purpose: PyInstaller links against `libc` which is [forward compatible but not backward compatible](https://pyinstaller.org/en/v4.7/usage.html#making-gnu-linux-apps-forward-compatible). This should make sure the `pytr` binary runs on new and older systems.
+The used base image are old on purpose: PyInstaller links against `libc` which is [forward compatible but not backward compatible](https://pyinstaller.org/en/v4.7/usage.html#making-gnu-linux-apps-forward-compatible). This should make sure the `pytr` binary runs on newer and older systems.

@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 ARG debian_version=slim-buster
-ARG python_version=3.9
-ARG pytr_tag=v0.3.1
+ARG python_version=3.10
+ARG pytr_tag=v0.4.2
 
 FROM python:${python_version}-${debian_version} AS builder
 ARG pytr_tag
@@ -39,7 +39,8 @@ WORKDIR /pytr/pytr
 RUN sed -i 's/exit(/sys.exit(/g' *.py
 RUN sed -i '/import signal/a import sys' main.py
 RUN sed -i '/import logging/a import sys' __main__.py
-RUN sed -i '/import re/a import sys' dl.py
+RUN sed -i '1s/^/import sys\n/' dl.py
+
 
 # Build the executable file (-F) and strip debug symbols
 # Use pythons optimize flag (-OO) to remove doc strings, assert statements, sets __debug__ to false
