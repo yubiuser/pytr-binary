@@ -23,7 +23,7 @@ jobs:
           echo "PYTR_HASH=${hash}" >>  "$GITHUB_OUTPUT"
 
   build:
-    runs-on:  ubuntu-latest
+    runs-on:  ${{ matrix.runner }}
     permissions:
       contents: read
     needs: prepare
@@ -32,7 +32,11 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        platform: [linux/arm64, linux/amd64]
+        include:
+          - platform: linux/amd64
+            runner: ubuntu-latest
+          - platform: linux/arm64
+            runner: ubuntu-24.04-arm
     steps:
       - name: Prepare name for digest up/download
         run: |
