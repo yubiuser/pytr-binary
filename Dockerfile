@@ -26,9 +26,6 @@ ADD https://github.com/pytr-org/pytr.git#${pytr_tag} /pytr
 WORKDIR /pytr
 
 
-# Temporay fix for websockets 13
-# see https://github.com/pytr-org/pytr/issues/143
-RUN pip install websockets==13
 # Install from source
 RUN python3 -m pip install .
 
