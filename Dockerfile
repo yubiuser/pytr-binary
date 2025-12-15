@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 ARG debian_version=slim-bullseye
 ARG python_version=3.10
-ARG pytr_tag=026a117810a65ff949597a6897583b46d25c7fc1
+ARG pytr_tag=v0.4.5
 
 FROM python:${python_version}-${debian_version} AS builder
 ARG pytr_tag
