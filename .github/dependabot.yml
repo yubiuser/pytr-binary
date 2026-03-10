@@ -8,4 +8,8 @@ updates:
     time: "10:00"
   open-pull-requests-limit: 10
   target-branch: main
+  groups:
+    github_action-dependencies:
+      patterns:
+        - "*"
 
