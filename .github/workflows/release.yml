@@ -76,7 +76,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download digests
-        uses: actions/download-artifact@v8.0.0
+        uses: actions/download-artifact@v8.0.1
         with:
           path: /tmp/artifacts
           pattern: pytr.*
@@ -86,7 +86,7 @@ jobs:
         run: ls -lha /tmp/artifacts
 
       - name: Attach tar to release
-        uses: softprops/action-gh-release@v2.5.0
+        uses: softprops/action-gh-release@v2.6.1
         with:
           files: |
             /tmp/artifacts/*
