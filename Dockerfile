@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 ARG debian_version=slim-bullseye
 ARG python_version=3.10
-ARG pytr_tag=v0.4.6
+ARG pytr_tag=v0.4.7
 
 FROM python:${python_version}-${debian_version} AS builder
 ARG pytr_tag
@@ -34,7 +34,7 @@ WORKDIR /pytr/pytr
 # Build the executable file (-F) and strip debug symbols
 # Use pythons optimize flag (-OO) to remove doc strings, assert statements, sets __debug__ to false
 # (not possible with webchanges, no cli output otherwise)
-RUN python3 -OO -m PyInstaller -F --strip --name pytr ./main.py
+RUN python3 -OO -m PyInstaller -F --strip --name pytr --add-data ./awswaf/webgl.json:./pytr/awswaf/ ./main.py
 
 
 FROM scratch AS export
