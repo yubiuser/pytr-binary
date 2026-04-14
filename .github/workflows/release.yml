@@ -53,7 +53,7 @@ jobs:
         uses: docker/setup-buildx-action@v4.0.0
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v7.0.0
+        uses: docker/build-push-action@v7.1.0
         id: build
         with:
           context: .
@@ -61,7 +61,7 @@ jobs:
           outputs: type=tar,dest=pytr.${{ env.PYTR_HASH }}.${{ env.PLATFORM_PAIR }}.tar .
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v7.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: pytr.${{ env.PYTR_HASH }}.${{ env.PLATFORM_PAIR }}
           path: pytr.*
@@ -86,7 +86,7 @@ jobs:
         run: ls -lha /tmp/artifacts
 
       - name: Attach tar to release
-        uses: softprops/action-gh-release@v2.6.1
+        uses: softprops/action-gh-release@v3.0.0
         with:
           files: |
             /tmp/artifacts/*
