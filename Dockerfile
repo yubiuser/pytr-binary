@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 ARG debian_version=slim-bullseye
 ARG python_version=3.10
-ARG pytr_tag=v0.4.7
+ARG pytr_tag=v0.4.8
 
 FROM python:${python_version}-${debian_version} AS builder
 ARG pytr_tag
@@ -26,8 +26,11 @@ ADD https://github.com/pytr-org/pytr.git#${pytr_tag} /pytr
 WORKDIR /pytr
 
 
-# Install from source
+# Install pytr dependencies from source
 RUN python3 -m pip install .
+
+# Install playwright chromium
+RUN PLAYWRIGHT_BROWSERS_PATH=0 python3 -m playwright install chromium
 
 WORKDIR /pytr/pytr
 
