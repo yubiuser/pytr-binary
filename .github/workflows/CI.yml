@@ -25,7 +25,6 @@ jobs:
     uses: docker/github-builder/.github/workflows/build.yml@v1.8.0
     needs: build-prepare
     with:
-      runner: auto
       distribute: true
       setup-qemu: true
       output: image
