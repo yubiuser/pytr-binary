@@ -14,11 +14,16 @@ jobs:
     outputs:
         pytr_hash: ${{ steps.prepare.outputs.PYTR_HASH }}
     steps:
-      - name: Get latest pytr commit hash
+      - name: Checkout Code
+        uses: actions/checkout@v7.0.1
+
+      - name: Get pytr commit hash for tag/ref set in Dockerfile
         id: prepare
         run: |
+          ref=$(grep -m1 '^ARG pytr_tag=' Dockerfile | cut -d= -f2)
           git clone https://github.com/pytr-org/pytr.git
           cd ./pytr
+          git checkout "${ref}"
           hash=$(git rev-parse --short HEAD)
           echo "PYTR_HASH=${hash}" >>  "$GITHUB_OUTPUT"
 
