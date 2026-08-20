@@ -13,4 +13,4 @@ docker build --output=. --target=export .
 
 The used base image are old on purpose: PyInstaller links against `libc` which is [forward compatible but not backward compatible](https://pyinstaller.org/en/v4.7/usage.html#making-gnu-linux-apps-forward-compatible). This should make sure the `pytr` binary runs on newer and older systems.
 
-**Note** since 0.4.10 `pytr`supports the new `v2` TR API which does not require `playwright`. I removed `playwright` to keep the binary size small, so all `pytr` commands need the `--v2` flag to login.
+**Note** since 0.4.10 `pytr` supports the new `v2` TR API which does not require `playwright`. I removed `playwright` to keep the binary size small, so all `pytr` commands need the `--v2` flag to login.
