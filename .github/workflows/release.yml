@@ -91,7 +91,7 @@ jobs:
         run: ls -lha /tmp/artifacts
 
       - name: Attach tar to release
-        uses: softprops/action-gh-release@v3.0.2
+        uses: softprops/action-gh-release@v3.0.3
         with:
           files: |
             /tmp/artifacts/*
