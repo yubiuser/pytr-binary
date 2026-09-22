@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-ARG debian_version=slim-bullseye
+ARG debian_version=slim-bookworm
 ARG python_version=3.10
 ARG pytr_tag=v0.4.10
 
@@ -12,7 +12,6 @@ RUN apt-get update && \
     gcc \
     libc-dev \
     libffi-dev \
-    upx-ucl \
     zlib1g-dev
 
 # Update pip, setuptools and wheel, install pyinstaller
